@@ -1,0 +1,11 @@
+app-dir: C:/Users/ada.sescu/Documents/Visual Studio 2013/Projects/SampleASPMySQLApp/SampleASPMySQLApp
+disk: 2048
+memory: 256
+name: SampleASPMySQLApp
+services:
+  sampleaspmysqlapp:
+    label: mysql
+    plan: free
+    provider: core
+    version: 5.5
+stack: win2012

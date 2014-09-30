@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Web.Configuration;
 
 namespace SampleASPMySQLApp
 {
@@ -16,11 +17,15 @@ namespace SampleASPMySQLApp
             }
             else
             {
+                string connString = WebConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                string db = "Database=";
+                string dbName = connString.Substring(connString.LastIndexOf(db) + db.Length, 33);
+
                 // query to check if MigrationHistory table is present in the database
                 var migrationHistoryTableExists = ((IObjectContextAdapter)context).ObjectContext.ExecuteStoreQuery<int>(
                 string.Format(
                   "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = '{0}' AND table_name = '__MigrationHistory'",
-                  "sampleaspmysqlapp2"));
+                  dbName));
 
                 // if MigrationHistory table is not there (which is the case first time we run) - create it
                 if (migrationHistoryTableExists.FirstOrDefault() == 0)
