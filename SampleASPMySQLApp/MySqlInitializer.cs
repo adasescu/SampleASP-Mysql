@@ -13,7 +13,7 @@ namespace SampleASPMySQLApp
             if (!context.Database.Exists())
             {
                 // if database did not exist before - create it
-                context.Database.Create();
+                context.Database.CreateIfNotExists();
             }
             else
             {
