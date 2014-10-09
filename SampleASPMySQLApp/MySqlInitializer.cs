@@ -1,8 +1,8 @@
-﻿using MySql.Data.MySqlClient;
-using SampleASPMySQLApp.Models;
+﻿using SampleASPMySQLApp.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using MySql.Data.MySqlClient;
 using System.Web.Configuration;
 
 namespace SampleASPMySQLApp
